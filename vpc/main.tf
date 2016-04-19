@@ -52,14 +52,3 @@ resource "aws_route_table_association" "a" {
     route_table_id = "${aws_route_table.vpc-rtb.id}"
     count = 3
 }
-
-# resource "aws_network_interface" "test" {
-#     subnet_id = "${element(aws_subnet.pub.*.id, count.index)}"
-#     private_ips = ["10.0.0.50"]
-#     security_groups = ["${aws_security_group.web.id}"]
-#     attachment {
-#         instance = "${aws_instance.test.id}"
-#         device_index = 1
-#     }
-#     count = 3
-# }
