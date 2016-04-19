@@ -9,12 +9,7 @@ resource "aws_launch_configuration" "test_lc" {
 }
 
 resource "aws_autoscaling_group" "test-asg" {
-    # availability_zones = [ "us-east-1a", "us-east-1a" ,"us-east-1a" ]
-    vpc_zone_identifier = [
-        "${aws_subnet.pub.0.id}",
-        "${aws_subnet.pub.1.id}",
-        "${aws_subnet.pub.2.id}",
-    ]
+    vpc_zone_identifier = ["${split(",","var.subnet_ids")}"]
     name = "test-asg"
     max_size = 5
     min_size = 3
