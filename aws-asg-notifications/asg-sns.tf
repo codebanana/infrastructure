@@ -1,3 +1,7 @@
+provider "aws" {
+    region = "us-east-1"
+}
+
 resource "aws_launch_configuration" "test_lc" {
     name = "cluster_config"
     image_id = "ami-8fcee4e5"
