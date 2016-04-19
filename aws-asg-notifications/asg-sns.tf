@@ -2,6 +2,10 @@ resource "aws_launch_configuration" "test_lc" {
     name = "cluster_config"
     image_id = "ami-8fcee4e5"
     instance_type = "t2.micro"
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_autoscaling_group" "test-asg" {
@@ -31,6 +35,10 @@ resource "aws_autoscaling_group" "test-asg" {
         value = "test-asg"
         propagate_at_launch = true
     }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_sns_topic" "test-asg" {
